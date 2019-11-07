@@ -1,6 +1,5 @@
 package com.example.pharmacydictionary.Controller
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.pharmacydictionary.Model.Drug
@@ -13,5 +12,17 @@ class DrugSummaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drug_summary)
 
+        populateFields()
     }
+
+    fun populateFields() {
+        val drug = getIntent().getSerializableExtra("drug") as Drug
+
+        drugName.text = drug.name
+        uses.text = drug.uses
+        sideEffects.text = drug.side_effects
+        precaution.text = drug.precaution
+        storage.text = drug.storage
+    }
+
 }
