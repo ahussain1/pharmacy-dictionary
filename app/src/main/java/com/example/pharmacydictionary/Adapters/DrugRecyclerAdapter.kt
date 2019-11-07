@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pharmacydictionary.Model.Drug
 import com.example.pharmacydictionary.R
 
-class DrugRecyclerAdapter(val context: Context, val drugList: List<Drug>) : RecyclerView.Adapter<DrugRecyclerAdapter.Holder>() {
+class DrugRecyclerAdapter(val context: Context, val drugList: List<Drug>, val itemClick: (Drug) -> Unit) : RecyclerView.Adapter<DrugRecyclerAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.drug_list_item, parent, false)
-        return Holder(view)
+        return Holder(view, itemClick)
     }
 
     override fun getItemCount(): Int {
@@ -23,11 +23,14 @@ class DrugRecyclerAdapter(val context: Context, val drugList: List<Drug>) : Recy
         holder.bindDrugInfo(drugList[position])
     }
 
-    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class Holder(itemView: View, val itemClick: (Drug) -> Unit) : RecyclerView.ViewHolder(itemView) {
         val drugName = itemView.findViewById<TextView>(R.id.drugName)
 
         fun bindDrugInfo(drug: Drug) {
             drugName.text = drug.name
+            itemView.setOnClickListener {
+                itemClick(drug)
+            }
         }
     }
 }

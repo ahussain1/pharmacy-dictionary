@@ -1,5 +1,6 @@
 package com.example.pharmacydictionary.Controller
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -26,7 +27,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupRecycleView() {
-        adapter = DrugRecyclerAdapter(this, displayList)
+        adapter = DrugRecyclerAdapter(this, displayList) {drug ->
+            val drugIntent = Intent(this, DrugSummaryActivity::class.java)
+            startActivity(drugIntent)
+        }
         drugListView.adapter = adapter
         val layoutManager = LinearLayoutManager(this)
         drugListView.layoutManager = layoutManager
