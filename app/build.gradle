@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.pharmacydictionary"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -23,6 +23,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-analytics:17.2.1'
     testImplementation 'junit:junit:4.12'
     debugImplementation 'com.android.support.test:runner:1.0.2'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -34,4 +35,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.firebase:firebase-storage:19.1.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

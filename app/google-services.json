@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "239910743869",
+    "firebase_url": "https://pharmacydictionary-f84d4.firebaseio.com",
+    "project_id": "pharmacydictionary-f84d4",
+    "storage_bucket": "pharmacydictionary-f84d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239910743869:android:f19584c72d3c085214df54",
+        "android_client_info": {
+          "package_name": "com.example.pharmacydictionary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239910743869-f3pm040donlfcmt6djibvhteuchpufnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-7qf_lNUNMFgyHQT43LSIaziWilpUrwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "239910743869-f3pm040donlfcmt6djibvhteuchpufnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
