@@ -13,7 +13,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/background_light"
         android:textColor="#636366"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"

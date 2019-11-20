@@ -30,7 +30,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private var dl: DrawerLayout? = null
     private var t: ActionBarDrawerToggle? = null
@@ -80,23 +80,37 @@ class MainActivity : AppCompatActivity() {
         drawer_layout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
 
+        navigation_view.setNavigationItemSelectedListener(this)
+    }
 
-        // Set navigation view navigation item selected listener
-        navigation_view.setNavigationItemSelectedListener{
-            when (it.itemId){
-                R.id.action_cut -> toast("Cut clicked")
-                R.id.action_copy -> toast("Copy clicked")
-                R.id.action_paste -> toast("Paste clicked")
-                R.id.action_new ->{
-                    // Multiline action
-                    toast("New clicked")
-                    drawer_layout.setBackgroundColor(Color.RED)
-                }
-
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.action_cut -> {
+                loadFavorites(favorites = FavoritesFragment())
             }
-            // Close the drawer
+            R.id.action_copy -> toast("Copy clicked")
+            R.id.action_paste -> toast("Paste clicked")
+            R.id.action_new ->{
+                // Multiline action
+                toast("New clicked")
+                drawer_layout.setBackgroundColor(Color.RED)
+            }
+        }
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    override fun onBackPressed() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
-            true
+        } else {
+            super.onBackPressed()
+        }
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            finish();
         }
     }
 
@@ -173,5 +187,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun Context.toast(message:String){
         Toast.makeText(applicationContext,message,Toast.LENGTH_SHORT).show()
+    }
+
+    private fun loadFavorites(favorites: FavoritesFragment) {
+        val fm = supportFragmentManager.beginTransaction()
+        fm.replace(R.id.drawer_layout, favorites)
+        fm.commit()
     }
 }
