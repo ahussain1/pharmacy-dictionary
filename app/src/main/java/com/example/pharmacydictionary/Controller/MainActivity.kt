@@ -191,7 +191,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun loadFavorites(favorites: FavoritesFragment) {
         val fm = supportFragmentManager.beginTransaction()
-        fm.replace(R.id.drawer_layout, favorites)
+//        fm.replace(R.id.main_frame, favorites)
         fm.commit()
     }
 }
